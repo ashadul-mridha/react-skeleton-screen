@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Skeleton from './Skeleton/Skeleton';
 
 const Article = () => {
     const [articles , setArticles] = useState([]);
@@ -24,14 +25,18 @@ const Article = () => {
             fetch('https://jsonplaceholder.typicode.com/posts')
             .then(res => res.json())
             .then( data => {
-                setArticles(data.data);
+                setArticles(data);
                 setLoading(false)
             })
         } ,3000)
 
     } , [])
     return (
-        <>
+        <div>
+            <Skeleton type='title'></Skeleton>
+            <Skeleton type='text'></Skeleton>
+            <Skeleton type='avatar'></Skeleton>
+            <Skeleton type='thumbnail'></Skeleton>
             {
                 loading ? (
                     <div>Loading</div>
@@ -41,6 +46,7 @@ const Article = () => {
                            articles?.map( article => {
                                return(
                                    <div>
+                                       {console.log(article)}
                                         <h3>{article?.title}</h3>
                                         <p>{article?.body}</p>
                                    </div>
@@ -51,7 +57,7 @@ const Article = () => {
                     </div>
                 )
             }
-        </>
+        </div>
     );
 };
 
