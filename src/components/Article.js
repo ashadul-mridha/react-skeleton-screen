@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Skeleton from './Skeleton/Skeleton';
+import SkeletonArticle from './Skeleton/SkeletonArticle/SkeletonArticle';
 
 const Article = () => {
     const [articles , setArticles] = useState([]);
@@ -33,13 +33,13 @@ const Article = () => {
     } , [])
     return (
         <div>
-            <Skeleton type='title'></Skeleton>
-            <Skeleton type='text'></Skeleton>
-            <Skeleton type='avatar'></Skeleton>
-            <Skeleton type='thumbnail'></Skeleton>
             {
                 loading ? (
-                    <div>Loading</div>
+                    [1,2,3,4,5,6,7,8,9].map( (n) => {
+                       return(
+                            <SkeletonArticle key={n}></SkeletonArticle>
+                       )
+                    })
                 ) : (
                     <div>
                        {
