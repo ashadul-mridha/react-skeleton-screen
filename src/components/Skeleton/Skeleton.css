@@ -1,5 +1,6 @@
 .skeleton{
-    background-color: #ddd;
+    opacity: .7;
+    animation: skeleton-loading 1s linear infinite alternate;d;
     border-radius: 4px;
     margin: 10px 0px;
 }
@@ -36,4 +37,14 @@
     grid-gap: 30px;
     justify-content: center;
     align-items: center;
+}
+
+
+@keyframes skeleton-loading{
+    0%{
+        background-color: hsl(200, 20%, 70%);
+    }
+    100%{
+        background-color: hsl(200, 20%, 95%);
+    }
 }
